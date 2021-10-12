@@ -50,5 +50,15 @@ def getUsuario():
 def obtenerProducto():
     return jsonify(getProducto());
 
+@app.route('/registro', methods=['GET'])
+@app.route('/registro/', methods=['GET'])
+def registro():
+    return render_template('registro.html')
+
+@app.route('/login', methods=['GET'])
+@app.route('/login/', methods=['GET'])
+def login():
+    return render_template('login.html')
+
 if(__name__ == '__main__'):
     app.run(debug=True, port=8080)
