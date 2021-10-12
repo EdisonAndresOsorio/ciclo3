@@ -70,7 +70,12 @@ servicios = {
                     '		  </form>'+
                     '		<span class="s-precio">$ '+data[i].Precio+'</span>'+
                     '		<a href="#" class="s-producto-comentarios">'+data[i].Comentarios+' comentarios</a>'+
-                    '       <div class="btn-del-edit-prod"><a href="#" class="btn-editar">Editar</a> <a href="#" class="btn-eliminar">Eliminar</a></div>'+
+                    '       <div class="btn-del-edit-prod">'+
+                    '       <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#formEditar">Editar</button>'+
+                    '       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formEliminar">Elimiar</button>'+
+                    // '           <a href="#" class="btn-editar">Editar</a>'+
+                    // '           <a href="#" class="btn-eliminar">Eliminar</a>'+
+                    '        </div>'+
                     '	</div>';
 
                     $("#list-productos").append(newProducto);
