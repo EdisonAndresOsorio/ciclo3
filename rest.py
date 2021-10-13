@@ -1,8 +1,8 @@
 import os
 from flask import Flask, render_template, request, jsonify, session
 #import productos
-from productos import getProductosList
 from producto import getProducto
+from productos import getProductosList, getProductosDeseadosList
 from utils import crypto
 
 userSuperAdmin = 1
@@ -21,11 +21,31 @@ def index():
 def producto():
     return render_template('product.html')
 
+@app.route('/lista-deseos/', methods=['GET','POST'])
+def htmlDeseos():    
+    return render_template('deseos.html')
+
 @app.route('/productos', methods=['GET','POST'])
 @app.route('/productos/', methods=['GET','POST'])
 def getProductos():
     return jsonify(getProductosList())
 
+
+@app.route('/listadeseos/', methods=['GET','POST'])
+def getProductosDeseados():
+    
+    #if( request.json["UserRef"] == crypto( str(session["userID"]) )):
+        #return request.json["UserRef"]
+        return jsonify(getProductosDeseadosList())    
+    #else:
+    #   return ""
+
+@app.route('/pruebaa/', methods=['GET','POST'])
+def getPrueba():
+    #if( request.json["UserRef"] == crypto(session["userID"])  ):
+        return request.json["UserRef"]#jsonify(getProductosDeseadosList())    
+    #else:
+    #    return ""
 
 @app.route('/connect', methods=['GET','POST'])
 @app.route('/connect/', methods=['GET','POST'])
