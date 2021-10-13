@@ -73,7 +73,7 @@ servicios = {
                     '   <a href="#" class="s-producto-comentarios">'+data[i].Comentarios+' comentarios</a>'+
                     '   <div class="btn-del-edit-prod">'+
                     '       <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#formEditar">Editar</button>'+
-                    '       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formEliminar">Elimiar</button>'+
+                    '       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formEliminar">Eliminar</button>'+
                     '   </div>'+
                     '</div>';
 
@@ -178,7 +178,7 @@ servicios = {
                     '		<a href="#" class="s-producto-comentarios">'+data[i].Comentarios+' comentarios</a>'+
                     '       <div class="btn-del-edit-prod">'+
                     '       <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#formEditar">Editar</button>'+
-                    '       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formEliminar">Elimiar</button>'+
+                    '       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#formEliminar">Eliminar</button>'+
                     '        </div>'+
                     '	</div>';
 
