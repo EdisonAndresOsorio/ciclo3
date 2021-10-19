@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, jsonify, session
+from markupsafe import escape
 #import productos
 from producto import getProducto
 from productos import getProductosList, getProductosDeseadosList
@@ -30,22 +31,18 @@ def htmlDeseos():
 def getProductos():
     return jsonify(getProductosList())
 
-
 @app.route('/listadeseos/', methods=['GET','POST'])
-def getProductosDeseados():
-    
-    #if( request.json["UserRef"] == crypto( str(session["userID"]) )):
-        #return request.json["UserRef"]
+def getProductosDeseados():    
+    if( request.json["UserRef"] == crypto(session["userID"] )):
         return jsonify(getProductosDeseadosList())    
-    #else:
-    #   return ""
+    else:
+       return jsonify("")
 
-@app.route('/pruebaa/', methods=['GET','POST'])
-def getPrueba():
-    #if( request.json["UserRef"] == crypto(session["userID"])  ):
-        return request.json["UserRef"]#jsonify(getProductosDeseadosList())    
-    #else:
-    #    return ""
+@app.route("/putListadeseos/", methods=["GET", "POST"])
+def putListadeseos():
+    salida = {"SUCCESS": "ERROR", "DATA": ""}
+    salida["SUCCESS"] = "OK"
+    return jsonify(salida)
 
 @app.route('/connect', methods=['GET','POST'])
 @app.route('/connect/', methods=['GET','POST'])
@@ -80,5 +77,25 @@ def registro():
 def login():
     return render_template('login.html')
 
+@app.route('/loguearUsuario/', methods = ['POST', 'GET'])
+def loguearUsuario():
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        clave = request.form['clave']
+        if(usuario == 'admin' and clave == '123'):
+            return render_template('index.html')
+    else:
+        return 'No autorizado'
+
+@app.route('/probar', methods=['GET','POST'])
+def fnProbar():    
+    if(request.method == 'POST'): 
+        txtCedula = escape( request.form['txtCedula'] )
+        txtUsuario = 'Jaime'
+        txtEmail  = 'Jaime@hotmail.com'
+        return render_template('probar.html', txtCedula=txtCedula, txtUsuario=txtUsuario, txtEmail=txtEmail)
+    return render_template('probar.html')
+
+
 if(__name__ == '__main__'):
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=443, ssl_context=('micertificado.pem', 'llaveprivada.pem'))
