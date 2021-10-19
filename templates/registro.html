@@ -74,12 +74,12 @@
             <div class="card-body">
                 <h2 class="text-center">Crear una cuenta</h2>
                 <div class="card-text">
-                    <form action="/examples/actions/confirmation.php" method="post">
+                    <form id="registroForm" method="post">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Tipo de identificación:</label>
-                                    <select class="form-control">
+                                    <select name="tipoid" class="form-control">
                                         <option>CC</option>
                                         <option>TI</option>
                                         <option>CE</option>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Número de identificación:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="numid">
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Primer nombre:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="primernombre">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Segundo nombre:</label>
@@ -108,7 +108,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Primer apellido:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="primerapellido">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Segundo apellido:</label>
@@ -118,21 +118,21 @@
                         </div>
                         <div class="form-group">
                             <label>Correo electrónico:</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" name="correo">
                         </div>
                         <div class="form-group">
                             <label>Dirección:</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="direccion">
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Nombre de usuario:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="usuario">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Teléfono:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="telefono">
                                 </div>
                             </div>
                         </div>
@@ -140,21 +140,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Contraseña:</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="contrasena">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Repita su contraseña:</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="repetircontrasena">
                                 </div>
                             </div>
                         </div>
                         <div class="checkbox">
                             <label>
-                              <input type="checkbox">
+                              <input type="checkbox" name="acepto">
                               He leído y acepto la política de tratamiento de datos personales.
                             </label>
                         </div>
-                        <a href="/" class="primary-btn" style="display: block;margin: auto;">Registrarme</a>
+                        <button type="submit" class="primary-btn" style="width: 100%">Registrarme</button>
 
                         <div class="sign-up">
                             ¿Ya tienes una cuenta? <a href="/login">Ingresa aquí</a>
@@ -165,5 +165,130 @@
         </div>
     </div>
 </body>
+<!-- jQuery Plugins -->
+<script src='{{url_for("static", filename="js/jquery.min.js")}}'></script>
+<script src='{{url_for("static", filename="js/bootstrap.min.js")}}'></script>
+<script src='{{url_for("static", filename="js/main.js")}}'></script>
+<script src='{{url_for("static", filename="js/jquery.validate.min.js")}}'></script>
+<script>
+    $("#registroForm").validate({
+        rules: {
+            tipoid: {
+                required: true,
+                minlength: 2
+            },
+            numid: {
+                required: true,
+                minlength: 5
+            },
+            primernombre: {
+                required: true,
+                minlength: 3
+            },
+            primerapellido: {
+                required: true,
+                minlength: 3
+            },
+            correo: {
+                required: true,
+                minlength: 3
+            },
+            direccion: {
+                required: true,
+                minlength: 3
+            },
+            usuario: {
+                required: true,
+                minlength: 3
+            },
+            telefono: {
+                required: true,
+                minlength: 5
+            },
+            contrasena: {
+                required: true,
+                minlength: 8
+            },
+            repetircontrasena: {
+                required: true,
+                minlength: 8
+            },
+            acepto: {
+                required: true
+            }
+        },
+        messages: {
+            tipoid: {
+                required: "Por favor seleccione su tipo de identificación.",
+                minlength: "El tipo de identificación debe tener minimo 2 caracteres"
+            },
+            numid: {
+                required: "Por favor ingrese su número de identificación.",
+                minlength: "El número de identificación debe tener minimo 5 caracteres"
+            },
+            primernombre: {
+                required: "Por favor ingrese su primer nombre.",
+                minlength: "El primer nombre debe tener minimo 3 caracteres"
+            },
+            primerapellido: {
+                required: "Por favor ingrese su primer apellido.",
+                minlength: "El primer apellido debe tener minimo 3 caracteres"
+            },
+            correo: {
+                required: "Por favor ingrese un correo electronico.",
+                minlength: "El correo electronico debe tener minimo 3 caracteres"
+            },
+            direccion: {
+                required: "Por favor ingrese una dirección.",
+                minlength: "La dirección debe tener minimo 3 caracteres"
+            },
+            usuario: {
+                required: "Por favor ingrese un usuario.",
+                minlength: "El usuario debe tener minimo 3 caracteres"
+            },
+            telefono: {
+                required: "Por favor ingrese su telefono.",
+                minlength: "El telefono debe tener minimo 5 caracteres"
+            },
+            contrasena: {
+                required: "Por favor ingrese una contraseña.",
+                minlength: "La contraseña debe tener minimo 8 caracteres"
+            },
+            repetircontrasena: {
+                required: "Por favor ingrese una contraseña.",
+                minlength: "La contraseña debe tener minimo 8 caracteres"
+            },
+            acepto: {
+                required: "Debe aceptar las politicas de privacidad.",
+            }
+        },
+        submitHandler: function(form) {
+            // do other things for a valid form
+            event.preventDefault();
+            var usuario = $('#usuario').val();
+            var clave = $('#clave').val();
+            var request = $.ajax({
+                url: "../loguearUsuario/",
+                method: "POST",
+                dataType: "json",
+                data: {
+                    usuario: usuario,
+                    clave: clave
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            request.done(function(res) {
+                window.location.replace("/");
+            });
+
+            request.fail(function(jqXHR, textStatus) {
+                console.log(jqXHR);
+            });
+        }
+    });
+</script>
 
 </html>
