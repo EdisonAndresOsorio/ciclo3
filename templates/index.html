@@ -284,16 +284,13 @@
 
         </div>
 
-
-
     </div>
     </div>
-
-
-
 
     <div class="section">
-        <div class="crear-producto" id="crear-producto" style="display:none;"><a href="">CREAR PRODUCTO</a></div>
+        <div class="container crear-producto" id="crear-producto" style="display:none;">
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#formCrearProducto">Crear Producto</button>
+        </div>
         <div class="container" id="list-productos">
             <!-- row -->
         </div>
@@ -341,6 +338,176 @@
             </div>
             <!-- /row -->
         </div>
+        <div id="formEditar" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="global-container">
+                            <div class="card login-form">
+                                <div class="card-body">
+                                    <h2 class="text-center">Editar producto</h2>
+                                    <div class="card-text">
+                                        <form action="/examples/actions/confirmation.php" method="post">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Nombre:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Código:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Seleccionar imagenes:</label>
+                                                        <input type="file" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Descripción:</label>
+                                                        <textarea class="form-control" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Precio:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Stock:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Marca:</label>
+                                                        <select class="form-control">
+                                                            <option>Nike</option>
+                                                            <option>Totto</option>
+                                                            <option>Rebook</option>
+                                                            <option>Americanino</option>
+                                                            <option>Puma</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="formCrearProducto" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="global-container">
+                            <div class="card login-form">
+                                <div class="card-body">
+                                    <h2 class="text-center">Crear producto</h2>
+                                    <div class="card-text">
+                                        <form action="/examples/actions/confirmation.php" method="post">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Nombre:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Código:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Seleccionar imagenes:</label>
+                                                        <input type="file" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Descripción:</label>
+                                                        <textarea class="form-control" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Precio:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Stock:</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Marca:</label>
+                                                        <select class="form-control">
+                                                            <option>Nike</option>
+                                                            <option>Totto</option>
+                                                            <option>Rebook</option>
+                                                            <option>Americanino</option>
+                                                            <option>Puma</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- /container -->
     </div>
     <!-- /HOT DEAL SECTION -->
