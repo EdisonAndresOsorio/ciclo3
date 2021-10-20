@@ -61,53 +61,6 @@
         $('#RepetirContrasena').val('');
     });
 
-    //Guardar Usuario
-    $('#guardarUsuario').on('click', function(e) {
-        e.preventDefault();
-        if (busqueda) {
-            if ($('#tipoId').val() != '' && $('#numId').val() != '' && $('#primerNombre').val() != '' &&
-                $('#primerApellido').val() != '' && $('#correo').val() != '' && $('#direccion').val() != '' &&
-                $('#nombreUsuario').val() != '' && $('#telefono').val() != '') {
-                $('#tipoId').val('CC');
-                $('#numId').val('');
-                $('#primerNombre').val('');
-                $('#segundoNombre').val('');
-                $('#primerApellido').val('');
-                $('#segundoApellido').val('');
-                $('#correo').val('');
-                $('#direccion').val('');
-                $('#nombreUsuario').val('');
-                $('#telefono').val('');
-                $('#contrasena').val('');
-                $('#RepetirContrasena').val('');
-                alert('Usuario creado exitosamente!');
-            } else {
-                alert('Todos los campos deben estar diligenciados.');
-            }
-        } else {
-            if ($('#tipoId').val() != '' && $('#numId').val() != '' && $('#primerNombre').val() != '' &&
-                $('#primerApellido').val() != '' && $('#correo').val() != '' && $('#direccion').val() != '' &&
-                $('#nombreUsuario').val() != '' && $('#telefono').val() != '' && $('#contrasena').val() != '' && $('#repetirContrasena').val() != '') {
-                $('#tipoId').val('CC');
-                $('#numId').val('');
-                $('#primerNombre').val('');
-                $('#segundoNombre').val('');
-                $('#primerApellido').val('');
-                $('#segundoApellido').val('');
-                $('#correo').val('');
-                $('#direccion').val('');
-                $('#nombreUsuario').val('');
-                $('#telefono').val('');
-                $('#contrasena').val('');
-                $('#RepetirContrasena').val('');
-                alert('Usuario creado exitosamente!');
-            } else {
-                alert('Todos los campos deben estar diligenciados.');
-            }
-        }
-
-    });
-
     //Comentar
     $('#Comentar').on('click', function(e) {
         e.preventDefault();

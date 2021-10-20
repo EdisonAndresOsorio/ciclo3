@@ -87,6 +87,11 @@ def loguearUsuario():
     else:
         return 'No autorizado'
 
+@app.route('/gestionUsuario', methods=['GET'])
+@app.route('/gestionUsuario/', methods=['GET'])
+def gestionUsuario():
+    return render_template('gestionUsuario.html')
+
 @app.route('/probar', methods=['GET','POST'])
 def fnProbar():    
     if(request.method == 'POST'): 
