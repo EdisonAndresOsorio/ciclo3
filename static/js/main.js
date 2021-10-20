@@ -4,7 +4,7 @@
     //Buscar Usuario
     $('#numId').keyup(function(e) {
         e.preventDefault();
-        if ($('#numId').val() == '1234' && $('#tipoId').val() == 'CC') {
+        if ($('#numId').val() == '12345' && $('#tipoId').val() == 'CC') {
             $('#primerNombre').val('Radamel');
             $('#primerApellido').val('Falcao');
             $('#correo').val('rfalcao@fcf.com');

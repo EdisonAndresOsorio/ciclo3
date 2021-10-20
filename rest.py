@@ -1,5 +1,7 @@
+import json
 import os
 from flask import Flask, render_template, request, jsonify, session
+from flask.json import JSONEncoder
 from markupsafe import escape
 #import productos
 from producto import getProducto
@@ -80,12 +82,14 @@ def login():
 @app.route('/loguearUsuario/', methods = ['POST', 'GET'])
 def loguearUsuario():
     if request.method == 'POST':
-        usuario = request.form['usuario']
-        clave = request.form['clave']
-        if(usuario == 'admin' and clave == '123'):
-            return render_template('index.html')
+        usuario = request.json["usuario"]
+        clave = request.json["clave"]
+        if(usuario == 'admin' and clave == '12345678'):
+            return "Autorizado"
+        else: 
+            return "No autorizado"
     else:
-        return 'No autorizado'
+        return "Peticion incorrecta"
 
 @app.route('/gestionUsuario', methods=['GET'])
 @app.route('/gestionUsuario/', methods=['GET'])
