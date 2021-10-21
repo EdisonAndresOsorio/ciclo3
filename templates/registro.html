@@ -79,7 +79,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Tipo de identificación:</label>
-                                    <select name="tipoid" class="form-control">
+                                    <select name="tipoid" class="form-control" id="tipo_id">
                                         <option>CC</option>
                                         <option>TI</option>
                                         <option>CE</option>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Número de identificación:</label>
-                                    <input type="text" class="form-control" name="numid">
+                                    <input type="text" class="form-control" name="numid" id="num_id">
                                 </div>
                             </div>
                         </div>
@@ -96,11 +96,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Primer nombre:</label>
-                                    <input type="text" class="form-control" name="primernombre">
+                                    <input type="text" class="form-control" name="primernombre" id="primer_nombre">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Segundo nombre:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="segundonombre" id="segundo_nombre">
                                 </div>
                             </div>
                         </div>
@@ -108,31 +108,31 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Primer apellido:</label>
-                                    <input type="text" class="form-control" name="primerapellido">
+                                    <input type="text" class="form-control" name="primerapellido" id="primer_apellido">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Segundo apellido:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="segundoapellido" id="segundo_apellido">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Correo electrónico:</label>
-                            <input type="email" class="form-control" name="correo">
+                            <input type="email" class="form-control" name="correo" id="correo">
                         </div>
                         <div class="form-group">
                             <label>Dirección:</label>
-                            <input type="text" class="form-control" name="direccion">
+                            <input type="text" class="form-control" name="direccion" id="direccion">
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Nombre de usuario:</label>
-                                    <input type="text" class="form-control" name="usuario">
+                                    <input type="text" class="form-control" name="usuario" id="usuario">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Teléfono:</label>
-                                    <input type="text" class="form-control" name="telefono">
+                                    <input type="text" class="form-control" name="telefono" id="telefono">
                                 </div>
                             </div>
                         </div>
@@ -140,11 +140,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Contraseña:</label>
-                                    <input type="password" class="form-control" name="contrasena">
+                                    <input type="password" class="form-control" name="contrasena" id="contrasena">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Repita su contraseña:</label>
-                                    <input type="password" class="form-control" name="repetircontrasena">
+                                    <input type="password" class="form-control" name="repetircontrasena" id="r_contrasena">
                                 </div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
             },
             correo: {
                 required: true,
-                minlength: 3
+                email: true
             },
             direccion: {
                 required: true,
@@ -209,8 +209,7 @@
                 minlength: 8
             },
             repetircontrasena: {
-                required: true,
-                minlength: 8
+                equalTo: "#contrasena"
             },
             acepto: {
                 required: true
@@ -234,7 +233,7 @@
             },
             correo: {
                 required: "Por favor ingrese un correo electronico.",
-                minlength: "El correo electronico debe tener minimo 3 caracteres"
+                email: "Ingrese un correo valido"
             },
             direccion: {
                 required: "Por favor ingrese una dirección.",
@@ -253,8 +252,7 @@
                 minlength: "La contraseña debe tener minimo 8 caracteres"
             },
             repetircontrasena: {
-                required: "Por favor ingrese una contraseña.",
-                minlength: "La contraseña debe tener minimo 8 caracteres"
+                equalTo: "Las contraseñas no coinciden"
             },
             acepto: {
                 required: "Debe aceptar las politicas de privacidad.",
@@ -263,16 +261,34 @@
         submitHandler: function(form) {
             // do other things for a valid form
             event.preventDefault();
+            var tipo_id = $("#tipo_id").val();
+            var num_id = $('#num_id').val();
+            var primer_nombre = $('#primer_nombre').val();
+            var segundo_nombre = $('#segundo_nombre').val();
+            var primer_apellido = $('#primer_apellido').val();
+            var segundo_apellido = $('#segundo_apellido').val();
+            var correo = $('#correo').val();
+            var direccion = $('#direccion').val();
             var usuario = $('#usuario').val();
-            var clave = $('#clave').val();
+            var telefono = $('#telefono').val();
+            var contrasena = $('#contrasena').val();
             var request = $.ajax({
-                url: "../loguearUsuario/",
+                url: "../registrarUsuario/",
                 method: "POST",
-                dataType: "json",
-                data: {
+                data: JSON.stringify({
+                    tipo_id: tipo_id,
+                    num_id: num_id,
+                    primer_nombre: primer_nombre,
+                    segundo_nombre: segundo_nombre,
+                    primer_apellido: primer_apellido,
+                    segundo_apellido: segundo_apellido,
+                    correo: correo,
+                    direccion: direccion,
                     usuario: usuario,
-                    clave: clave
-                },
+                    telefono: telefono,
+                    contrasena: contrasena,
+                    rol: 3
+                }),
                 headers: {
                     'Content-Type': 'application/json'
                 }

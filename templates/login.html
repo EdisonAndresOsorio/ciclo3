@@ -138,22 +138,31 @@
             var request = $.ajax({
                 url: "../loguearUsuario/",
                 method: "POST",
-                dataType: "json",
-                data: {
+                data: JSON.stringify({
                     usuario: usuario,
                     clave: clave
-                },
+                }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
 
             request.done(function(res) {
-                window.location.replace("/");
+                if (res == "Autorizado") {
+                    localStorage.autenticado = true;
+                    window.location.replace("/");
+                } else if (res == 'No autorizado') {
+                    localStorage.autenticado = false;
+                    alert("La combinación de usuario y contraseña no coinciden.");
+                } else if (res == 'Datos invalidos') {
+                    alert("Los datos ingresados no fueron ingresados correctamente, por favor vuelva a intentarlo.");
+                } else {
+                    alert("Se realizó una petición incorrecta para ingresar al sistema.");
+                }
             });
 
             request.fail(function(jqXHR, textStatus) {
-                console.log(jqXHR);
+                alert('Ocurrió un error inesperado, por favor intentelo de nuevo más tarde.')
             });
         }
     });
